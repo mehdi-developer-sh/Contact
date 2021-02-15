@@ -14,7 +14,10 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Contact.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+    <style name="Theme.Contact.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
     <style name="Theme.Contact.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
