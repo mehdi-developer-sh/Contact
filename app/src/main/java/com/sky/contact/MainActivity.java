@@ -1,7 +1,10 @@
 package com.sky.contact;
 
 import android.os.Bundle;
+import android.view.ActionMode;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,18 +12,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.sky.alphabemodule.AlphabetView;
+import com.sky.contact.model.Contact;
+import com.sky.contact.ui.RVAdapter;
+import com.sky.contact.utility.SampleData;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private TextView tvNotingFound;
+    private RVAdapter adapter;
+    private final List<Contact> contactList = SampleData.getContacts();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         findViews();
+
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
+        recyclerView.setHasFixedSize(true);
+        adapter = new RVAdapter(this, contactList);
+        recyclerView.setAdapter(adapter);
     }
 
     private void findViews() {
