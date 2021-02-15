@@ -43,5 +43,5 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
-    implementation files('libs/AlphabeModule-release.aar')
+    implementation files('libs/AlphabetView.aar')
 }
