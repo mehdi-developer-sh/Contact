@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AlphabetView">
+        <item name="av_randomBackgroundColor">false</item>
+        <item name="av_scaleType">fitCenter</item>
+        <item name="av_textColor">@android:color/white</item>
+        <item name="av_textStrokeWidth">1</item>
+        <item name="av_textSize">20sp</item>
+        <item name="av_checkableByClick">false</item>
+        <item name="av_length">1</item>
+        <item name="av_checkedBackgroundColor">#F55</item>
+        <item name="av_checkedDrawable">@drawable/ic_baseline_check_24</item>
+        <item name="android:background">#019fff</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
+    <style name="AlphabetView.CheckableByClick">
+        <item name="av_checkableByClick">true</item>
+    </style>
+</resources>

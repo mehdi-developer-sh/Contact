@@ -48,10 +48,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:onClick="addContactBtnClick"
         android:contentDescription="@string/add_contact"
+        android:onClick="addContactBtnClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_person_add_24" />
 
+    <com.sky.alphabemodule.AlphabetView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        app:av_sourceText="Hello Baby"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

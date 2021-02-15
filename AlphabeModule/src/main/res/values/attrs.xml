@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AlphabetView">
+        <attr name="av_length" format="integer" />
+        <attr name="av_textSize" format="dimension" />
+        <attr name="av_textStrokeWidth" format="float" />
+        <attr name="av_textColor" format="color" />
+        <attr name="av_randomBackgroundColor" format="boolean" />
+        <attr name="av_sourceText" format="string" />
+        <attr name="av_checked" format="boolean" />
+        <attr name="android:background" />
+        <attr name="av_checkableByClick" format="boolean" />
+        <attr name="av_checkedDrawable" format="reference" />
+        <attr name="av_checkedBackgroundColor" format="color" />
+        <attr name="av_scaleType" format="enum">
+            <enum name="center" value="0" />
+            <enum name="fitCenter" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>
