@@ -15,12 +15,29 @@
     </style>
 
     <style name="Theme.Contact.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="actionModeStyle">@style/Style.ActionMode</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+
+    <style name="Style.ActionMode" parent="@style/Widget.AppCompat.ActionMode">
+        <item name="background">@color/action_mode_dark</item>
+        <item name="android:backgroundSplit">?android:attr/actionModeSplitBackground</item>
+        <item name="android:height">?android:attr/actionBarSize</item>
+        <item name="android:titleTextStyle">@style/Stl.TitleTextStyle</item>
+    </style>
+
+    <style name="Stl.TitleTextStyle" parent="@style/Widget.AppCompat.ActionMode">
+        <item name="android:textColor">#ffffff</item>
     </style>
 
     <style name="Theme.Contact.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Contact.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>
