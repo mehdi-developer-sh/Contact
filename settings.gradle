@@ -1,3 +1,4 @@
+//include ':AlphabeModule-release'
 include ':AlphabeModule'
 include ':app'
 rootProject.name = "Contact"
