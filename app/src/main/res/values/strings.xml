@@ -4,4 +4,8 @@
     <string name="delete_all">Delete all</string>
     <string name="add_sample_data">Add sample data</string>
     <string name="noting_found">Noting found</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="text">Text</string>
+    <string name="call">Call</string>
 </resources>
