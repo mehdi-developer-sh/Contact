@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Contact.NoActionBar">
-        <activity android:name=".Act_ContactDetail"></activity>
+        <activity android:name=".Act_ContactDetail"
+            android:theme="@style/Theme.Contact.Light"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

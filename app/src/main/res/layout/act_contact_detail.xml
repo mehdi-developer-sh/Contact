@@ -6,4 +6,165 @@
     android:layout_height="match_parent"
     tools:context=".Act_ContactDetail">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Contact.AppBarOverlay.Light"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#FFFFFF"
+            app:popupTheme="@style/Theme.Contact.PopupOverlay" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.sky.alphabemodule.AlphabetView
+        android:id="@+id/alphabetView"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="40dp"
+        android:background="#f55"
+        app:av_sourceText="Name"
+        app:av_textSize="30sp"
+        app:av_textStrokeWidth="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar" />
+
+    <TextView
+        android:id="@+id/tvFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:text="Mehdi Khosravi"
+        android:textColor="#222222"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/alphabetView" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:background="#e9e9e9"
+        app:layout_constraintTop_toBottomOf="@id/tvFullName" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCall"
+        style="@style/detail_buttons_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/call"
+        app:layout_constraintEnd_toStartOf="@id/btnTextMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTextMessage"
+        style="@style/detail_buttons_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnCall"
+        app:layout_constraintTop_toBottomOf="@id/line1" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e9e9e9"
+        app:layout_constraintTop_toBottomOf="@id/btnCall" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_phone"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:padding="3dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line2"
+        app:srcCompat="@drawable/ic_baseline_local_phone_24" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:paddingStart="5dp"
+        android:text="09013206294"
+        android:textColor="#444444"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/tvMobileLabel"
+        app:layout_constraintStart_toEndOf="@id/ic_phone"
+        app:layout_constraintTop_toTopOf="@id/ic_phone" />
+
+    <TextView
+        android:id="@+id/tvMobileLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:text="Mobile"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/ic_phone"
+        app:layout_constraintStart_toStartOf="@id/tvPhone"
+        app:layout_constraintTop_toBottomOf="@id/tvPhone" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ic_phone"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="#e9e9e9"
+        app:layout_constraintTop_toBottomOf="@id/ic_phone" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_email"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:padding="3dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="@id/line3"
+        app:layout_constraintTop_toBottomOf="@id/line3"
+        app:srcCompat="@drawable/ic_baseline_alternate_email_24" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:paddingStart="5dp"
+        android:text="09013206294"
+        android:textColor="#444444"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/tvEmailLabel"
+        app:layout_constraintStart_toEndOf="@id/ic_email"
+        app:layout_constraintTop_toTopOf="@id/ic_email" />
+
+    <TextView
+        android:id="@+id/tvEmailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:text="Email"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/ic_email"
+        app:layout_constraintStart_toStartOf="@id/tvEmail"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

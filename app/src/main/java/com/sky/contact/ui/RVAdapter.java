@@ -1,6 +1,7 @@
 package com.sky.contact.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sky.alphabemodule.AlphabetView;
+import com.sky.contact.Act_ContactDetail;
 import com.sky.contact.R;
 import com.sky.contact.model.Contact;
 
@@ -37,7 +39,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
 
         holder.alphabetView.setSourceText(contact.getName());
         holder.tvName.setText(contact.getFullName());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, Act_ContactDetail.class);
+            context.startActivity(intent);
+        });
     }
+
     @Override
     public int getItemCount() {
         return contacts.size();
