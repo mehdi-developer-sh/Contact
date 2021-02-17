@@ -6,21 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.Contact.AppBarOverlay"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/Theme.Contact.PopupOverlay"
-            app:title="@string/app_name" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+    <include layout="@layout/light_appbar"/>
 
     <TextView
         android:id="@+id/tvNotingFound"

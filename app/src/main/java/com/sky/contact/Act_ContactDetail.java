@@ -29,6 +29,7 @@ public class Act_ContactDetail extends AppCompatActivity {
         tvFullName = findViewById(R.id.tvFullName);
         tvPhone = findViewById(R.id.tvPhone);
         tvEmail = findViewById(R.id.tvEmail);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

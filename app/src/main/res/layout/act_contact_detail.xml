@@ -6,20 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Act_ContactDetail">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.Contact.AppBarOverlay.Light"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#FFFFFF"
-            app:popupTheme="@style/Theme.Contact.PopupOverlay" />
-    </com.google.android.material.appbar.AppBarLayout>
+    <include layout="@layout/light_appbar" />
 
     <com.sky.alphabemodule.AlphabetView
         android:id="@+id/alphabetView"
@@ -55,7 +42,7 @@
         android:background="#e9e9e9"
         app:layout_constraintTop_toBottomOf="@id/tvFullName" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btnCall"
         style="@style/detail_buttons_style"
         android:layout_width="0dp"
@@ -65,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line1" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btnTextMessage"
         style="@style/detail_buttons_style"
         android:layout_width="0dp"
@@ -82,15 +69,15 @@
         android:background="#e9e9e9"
         app:layout_constraintTop_toBottomOf="@id/btnCall" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/ic_phone"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
-        android:padding="3dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:padding="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line2"
         app:srcCompat="@drawable/ic_baseline_local_phone_24" />
@@ -123,21 +110,21 @@
     <View
         android:id="@+id/line3"
         android:layout_width="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/ic_phone"
         android:layout_height="1dp"
         android:layout_marginTop="20dp"
         android:background="#e9e9e9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ic_phone"
         app:layout_constraintTop_toBottomOf="@id/ic_phone" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/ic_email"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:padding="3dp"
         android:layout_marginBottom="10dp"
+        android:padding="3dp"
         app:layout_constraintStart_toStartOf="@id/line3"
         app:layout_constraintTop_toBottomOf="@id/line3"
         app:srcCompat="@drawable/ic_baseline_alternate_email_24" />
