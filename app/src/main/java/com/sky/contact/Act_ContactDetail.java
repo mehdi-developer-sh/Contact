@@ -68,7 +68,7 @@ public class Act_ContactDetail extends AppCompatActivity {
         tvEmail = findViewById(R.id.tvEmail);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Contact detail");
+        toolbar.setTitle(R.string.contact_detail);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

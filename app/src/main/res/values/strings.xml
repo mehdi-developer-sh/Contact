@@ -14,4 +14,7 @@
     <string name="mobile_number">Mobile number</string>
     <string name="family">Family</string>
     <string name="name">Name</string>
+    <string name="create_contact">Create Contact</string>
+    <string name="edit_contact">Editing Contact</string>
+    <string name="contact_detail">Contact Detail</string>
 </resources>

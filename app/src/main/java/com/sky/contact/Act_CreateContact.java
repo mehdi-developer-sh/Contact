@@ -39,9 +39,6 @@ public class Act_CreateContact extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             isEditing = true;
-//        }
-
-//        if (isEditing) {
             int id = bundle.getInt(Constants.KEY_CONTACT_ID);
 
             final Observer<ContactEntity> observer = contactEntity -> {
@@ -52,12 +49,14 @@ public class Act_CreateContact extends AppCompatActivity {
             };
             mViewModel.mContactLiveData.observe(this, observer);
             mViewModel.loadContact(id);
+            setTitle(R.string.edit_contact);
+        }else {
+            setTitle(R.string.create_contact);
         }
     }
 
     private void findViews() {
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Create ContactEntity");
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
