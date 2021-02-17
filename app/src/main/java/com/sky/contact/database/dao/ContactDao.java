@@ -34,4 +34,7 @@ public interface ContactDao {
 
     @Query("SELECT COUNT(*) FROM tbl_contacts")
     int getCount();
+
+    @Delete
+    void deleteAll(List<ContactEntity> selectedItems);
 }

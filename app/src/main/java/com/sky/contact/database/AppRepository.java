@@ -53,4 +53,13 @@ public class AppRepository {
     public void delete(ContactEntity value) {
         executor.execute(() -> mDb.getContactDao().delete(value));
     }
+
+    public void deleteAll(List<ContactEntity> selectedItems) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDb.getContactDao().deleteAll(selectedItems);
+            }
+        });
+    }
 }

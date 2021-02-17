@@ -13,6 +13,8 @@ public class ContactEntity {
     private String family;
     private String phone;
     private String email;
+    @Ignore
+    private boolean isSelected;
 
     public ContactEntity() {
     }
@@ -32,6 +34,16 @@ public class ContactEntity {
         this.family = family;
         this.phone = phone;
         this.email = email;
+    }
+
+    @Ignore
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    @Ignore
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     public int getId() {

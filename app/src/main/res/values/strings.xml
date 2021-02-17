@@ -17,4 +17,7 @@
     <string name="create_contact">Create Contact</string>
     <string name="edit_contact">Editing Contact</string>
     <string name="contact_detail">Contact Detail</string>
+    <string name="action_select_all">Select All</string>
+    <string name="action_deselect_all">DeSelect all</string>
+    <string name="selected">Selected</string>
 </resources>

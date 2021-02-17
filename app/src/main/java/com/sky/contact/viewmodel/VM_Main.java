@@ -28,4 +28,8 @@ public class VM_Main extends AndroidViewModel {
     public void deleteAll() {
         mRepository.deleteAll();
     }
+
+    public void deleteAll(List<ContactEntity> selectedItems) {
+        mRepository.deleteAll(selectedItems);
+    }
 }
