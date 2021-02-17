@@ -134,7 +134,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
 
     private void notifyItemChangedInScreen() {
         LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-
         if (layoutManager != null) {
             notifyItemRangeChanged(
                     layoutManager.findFirstVisibleItemPosition(),
