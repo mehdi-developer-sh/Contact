@@ -1,25 +1,33 @@
-package com.sky.contact.model;
+package com.sky.contact.database;
 
 import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
-public class Contact {
+@Entity(tableName = "tbl_contacts")
+public class ContactEntity {
+    @PrimaryKey(autoGenerate = true)
     private int id;
+
     private String name;
     private String family;
     private String mobileNumber;
     private String emailAddress;
 
-    public Contact() {
+    public ContactEntity() {
     }
 
-    public Contact(String name, String family, String mobileNumber, String emailAddress) {
+    @Ignore
+    public ContactEntity(String name, String family, String mobileNumber, String emailAddress) {
         this.name = name;
         this.family = family;
         this.mobileNumber = mobileNumber;
         this.emailAddress = emailAddress;
     }
 
-    public Contact(int id, String name, String family, String mobileNumber, String emailAddress) {
+    @Ignore
+    public ContactEntity(int id, String name, String family, String mobileNumber, String emailAddress) {
         this.id = id;
         this.name = name;
         this.family = family;
@@ -74,7 +82,7 @@ public class Contact {
     @NonNull
     @Override
     public String toString() {
-        return "Contact{" +
+        return "ContactEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", family='" + family + '\'' +

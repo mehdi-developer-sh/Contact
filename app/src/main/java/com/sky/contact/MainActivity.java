@@ -10,7 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.sky.contact.model.Contact;
+import com.sky.contact.database.AppDatabase;
+import com.sky.contact.database.ContactEntity;
 import com.sky.contact.ui.RVAdapter;
 import com.sky.contact.utility.SampleData;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView tvNotingFound;
     private RVAdapter adapter;
-    private final List<Contact> contactList = SampleData.getContacts();
+    private final List<ContactEntity> contactList = SampleData.getContacts();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addContactBtnClick(View view) {
-        startActivity(new Intent(this,Act_CreateContact.class));
+        startActivity(new Intent(this, Act_CreateContact.class));
     }
 }

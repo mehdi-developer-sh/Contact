@@ -18,7 +18,7 @@ public class Act_CreateContact extends AppCompatActivity {
 
     private void findViews() {
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Create Contact");
+        toolbar.setTitle("Create ContactEntity");
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

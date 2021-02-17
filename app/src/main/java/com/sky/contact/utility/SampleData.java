@@ -1,22 +1,22 @@
 package com.sky.contact.utility;
 
-import com.sky.contact.model.Contact;
+import com.sky.contact.database.ContactEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SampleData {
 
-    public static List<Contact> getContacts() {
-        List<Contact> contacts = new ArrayList<>();
+    public static List<ContactEntity> getContacts() {
+        List<ContactEntity> contactEntities = new ArrayList<>();
 
-        contacts.add(new Contact(0, "Mehdi", "Khosravi",
+        contactEntities.add(new ContactEntity( "Mehdi", "Khosravi",
                 "09172185392", "mehdidev78@gmail.com"));
-        contacts.add(new Contact(1, "Ali", "Mohammadi",
+        contactEntities.add(new ContactEntity( "Ali", "Mohammadi",
                 "09172185375", "mina@gmail.com"));
-        contacts.add(new Contact(2, "Reza", "Rasooli",
+        contactEntities.add(new ContactEntity( "Reza", "Rasooli",
                 "09172185784", "maryam@gmail.com"));
 
-        return contacts;
+        return contactEntities;
     }
 }
