@@ -14,10 +14,10 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Contact.Light">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/white</item>
+    <style name="Theme.Contact.NoActionBar.Light">
+        <!--        <item name="windowActionBar">false</item>-->
+        <!--        <item name="windowNoTitle">true</item>-->
+        <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/light_gray</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
@@ -45,9 +45,10 @@
 
     <style name="Theme.Contact.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Contact.AppBarOverlay.Light" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.Contact.AppBarOverlay.Light" parent="ThemeOverlay.AppCompat.Light" >
+        <item name="actionMenuTextColor">#019fff</item>
+    </style>
 
-    <style name="Theme.Contact.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name="Theme.Contact.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 </resources>
