@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">مخاطبین</string>
+    <string name="add_contact">افزودن مخاطب</string>
+    <string name="delete_all">حذف همه</string>
+    <string name="add_sample_data">افزودن داده های نمونه</string>
+    <string name="noting_found">موردی پیدا نشد</string>
+    <string name="action_delete">حذف</string>
+    <string name="action_edit">ویرایش</string>
+    <string name="text">پیام متنی</string>
+    <string name="call">تماس</string>
+    <string name="save">ذخیره</string>
+    <string name="cancel">لغو</string>
+    <string name="email">ایمیل</string>
+    <string name="mobile_number">تلفن</string>
+    <string name="family">نام خانوادگی</string>
+    <string name="name">نام</string>
+    <string name="create_contact">ایجاد مخاطب</string>
+    <string name="edit_contact">ویرایش مخاطب</string>
+    <string name="contact_detail">مشخصات مخاطب</string>
+</resources>
