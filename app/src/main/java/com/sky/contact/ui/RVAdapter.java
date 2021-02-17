@@ -52,7 +52,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
 
         holder.alphabetView.setSourceText(contact.getName());
         holder.tvName.setText(contact.getFullName());
-
+        holder.alphabetView.setBackgroundColor(contact.getColor());
         holder.alphabetView.setChecked(contact.isSelected());
 
         holder.itemView.setOnClickListener(v -> {

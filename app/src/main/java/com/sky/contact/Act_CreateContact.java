@@ -37,6 +37,7 @@ public class Act_CreateContact extends AppCompatActivity {
                 .get(VM_CreateContact.class);
 
         Bundle bundle = getIntent().getExtras();
+
         if (bundle != null) {
             isEditing = true;
             int id = bundle.getInt(Constants.KEY_CONTACT_ID);

@@ -49,6 +49,7 @@ public class Act_ContactDetail extends AppCompatActivity {
 
         mViewModel.mLiveContact.observe(this, contactEntity -> {
             this.contact = contactEntity;
+            alphabetView.setBackgroundColor(contactEntity.getColor());
             alphabetView.setSourceText(contactEntity.getName());
             alphabetView.invalidate();
             tvFullName.setText(contactEntity.getFullName());

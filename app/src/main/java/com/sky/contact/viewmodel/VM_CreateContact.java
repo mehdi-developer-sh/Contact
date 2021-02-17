@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.sky.contact.database.AppRepository;
 import com.sky.contact.database.ContactEntity;
+import com.sky.contact.utility.Color;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -39,6 +40,7 @@ public class VM_CreateContact extends AndroidViewModel {
         ContactEntity contact = mContactLiveData.getValue();
         if (contact == null) {
             contact = new ContactEntity();
+            contact.setColor(Color.getRandomColor(130, 210));
         }
 
         contact.setName(name);

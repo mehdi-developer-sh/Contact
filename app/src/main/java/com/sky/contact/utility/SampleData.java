@@ -11,11 +11,11 @@ public class SampleData {
         List<ContactEntity> contactEntities = new ArrayList<>();
 
         contactEntities.add(new ContactEntity("Mehdi", "Khosravi",
-                "09172185392", "mehdidev78@gmail.com"));
+                "09172185392", "mehdidev78@gmail.com", Color.getRandomColor(40, 180)));
         contactEntities.add(new ContactEntity("Ali", "Mohammadi",
-                "09172185375", "mina@gmail.com"));
+                "09172185375", "mina@gmail.com", Color.getRandomColor(40, 180)));
         contactEntities.add(new ContactEntity("Reza", "Rasooli",
-                "09172185784", "maryam@gmail.com"));
+                "09172185784", "maryam@gmail.com", Color.getRandomColor(40, 180)));
 
         return contactEntities;
     }

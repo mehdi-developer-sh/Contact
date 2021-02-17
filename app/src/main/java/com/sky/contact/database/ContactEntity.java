@@ -1,5 +1,7 @@
 package com.sky.contact.database;
 
+import android.graphics.Color;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -13,6 +15,9 @@ public class ContactEntity {
     private String family;
     private String phone;
     private String email;
+
+    private int color;
+
     @Ignore
     private boolean isSelected;
 
@@ -34,6 +39,15 @@ public class ContactEntity {
         this.family = family;
         this.phone = phone;
         this.email = email;
+    }
+
+    @Ignore
+    public ContactEntity(String name, String family, String phone, String email, int color) {
+        this.name = name;
+        this.family = family;
+        this.phone = phone;
+        this.email = email;
+        this.color = color;
     }
 
     @Ignore
@@ -88,6 +102,14 @@ public class ContactEntity {
 
     public String getFullName() {
         return name + " " + family;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     @NonNull
