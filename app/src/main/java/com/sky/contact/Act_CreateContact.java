@@ -27,6 +27,7 @@ public class Act_CreateContact extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_create_contact);
+
         findViews();
 
         initViewModel();
@@ -51,7 +52,7 @@ public class Act_CreateContact extends AppCompatActivity {
             mViewModel.mContactLiveData.observe(this, observer);
             mViewModel.loadContact(id);
             setTitle(R.string.edit_contact);
-        }else {
+        } else {
             setTitle(R.string.create_contact);
         }
     }

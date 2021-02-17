@@ -1,7 +1,5 @@
 package com.sky.contact.database;
 
-import android.graphics.Color;
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -15,7 +13,6 @@ public class ContactEntity {
     private String family;
     private String phone;
     private String email;
-
     private int color;
 
     @Ignore
