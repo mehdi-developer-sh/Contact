@@ -1,5 +1,7 @@
 package com.sky.contact.database.dao;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -25,7 +27,7 @@ public interface ContactDao {
     void deleteAll();
 
     @Query("SELECT * FROM tbl_contacts")
-    List<ContactEntity> getAllContacts();
+    LiveData<List<ContactEntity>> getAllContacts();
 
     @Query("SELECT * FROM tbl_contacts WHERE id=:id")
     ContactEntity findById(int id);

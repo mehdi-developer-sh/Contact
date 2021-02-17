@@ -9,30 +9,29 @@ import androidx.room.PrimaryKey;
 public class ContactEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
-
     private String name;
     private String family;
-    private String mobileNumber;
-    private String emailAddress;
+    private String phone;
+    private String email;
 
     public ContactEntity() {
     }
 
     @Ignore
-    public ContactEntity(String name, String family, String mobileNumber, String emailAddress) {
+    public ContactEntity(String name, String family, String phone, String email) {
         this.name = name;
         this.family = family;
-        this.mobileNumber = mobileNumber;
-        this.emailAddress = emailAddress;
+        this.phone = phone;
+        this.email = email;
     }
 
     @Ignore
-    public ContactEntity(int id, String name, String family, String mobileNumber, String emailAddress) {
+    public ContactEntity(int id, String name, String family, String phone, String email) {
         this.id = id;
         this.name = name;
         this.family = family;
-        this.mobileNumber = mobileNumber;
-        this.emailAddress = emailAddress;
+        this.phone = phone;
+        this.email = email;
     }
 
     public int getId() {
@@ -59,20 +58,20 @@ public class ContactEntity {
         this.family = family;
     }
 
-    public String getMobileNumber() {
-        return mobileNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFullName() {
@@ -86,8 +85,8 @@ public class ContactEntity {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", family='" + family + '\'' +
-                ", mobileNumber='" + mobileNumber + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
+                ", mobileNumber='" + phone + '\'' +
+                ", emailAddress='" + email + '\'' +
                 '}';
     }
 }

@@ -14,15 +14,16 @@ import com.sky.alphabemodule.AlphabetView;
 import com.sky.contact.Act_ContactDetail;
 import com.sky.contact.R;
 import com.sky.contact.database.ContactEntity;
+import com.sky.contact.utility.Constants;
 
 import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
-    private final List<ContactEntity> contactEntities;
+    private final List<ContactEntity> contacts;
     private final Context context;
 
-    public RVAdapter(Context context, List<ContactEntity> contactEntities) {
-        this.contactEntities = contactEntities;
+    public RVAdapter(Context context, List<ContactEntity> contacts) {
+        this.contacts = contacts;
         this.context = context;
     }
 
@@ -35,20 +36,21 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ContactEntity contact = contactEntities.get(position);
+        ContactEntity contact = contacts.get(position);
 
         holder.alphabetView.setSourceText(contact.getName());
         holder.tvName.setText(contact.getFullName());
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, Act_ContactDetail.class);
+            intent.putExtra(Constants.KEY_CONTACT_ID, contacts.get(holder.getAdapterPosition()).getId());
             context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        return contactEntities.size();
+        return contacts.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
