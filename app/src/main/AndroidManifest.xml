@@ -8,9 +8,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Contact.NoActionBar">
-        <activity android:name=".Act_ContactDetail"
-            android:theme="@style/Theme.Contact.Light"/>
+        android:theme="@style/Theme.Contact.NoActionBar.Light">
+        <activity android:name=".Act_CreateContact"
+            android:theme="@style/Theme.Contact.NoActionBar.Light"/>
+        <activity
+            android:name=".Act_ContactDetail"
+            android:theme="@style/Theme.Contact.NoActionBar.Light" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

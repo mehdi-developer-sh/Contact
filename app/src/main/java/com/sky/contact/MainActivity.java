@@ -1,10 +1,8 @@
 package com.sky.contact;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.ActionMode;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -56,6 +54,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addContactBtnClick(View view) {
-
+        startActivity(new Intent(this,Act_CreateContact.class));
     }
 }
