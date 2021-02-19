@@ -10,4 +10,8 @@
         android:id="@+id/action_add_sample"
         android:orderInCategory="101"
         android:title="@string/add_sample_data" />
+    <item
+        android:id="@+id/action_get_count"
+        android:orderInCategory="101"
+        android:title="@string/get_count" />
 </menu>

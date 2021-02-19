@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.sky.contact.database.dao.ContactDao;
 
-@Database(entities = {ContactEntity.class}, version = AppDatabase.DATABASE_VERSION)
+@Database(entities = {ContactEntity.class}, version = AppDatabase.DATABASE_VERSION ,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "AppDatabase.db";

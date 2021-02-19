@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity(tableName = "tbl_contacts")
 public class ContactEntity {
     @PrimaryKey(autoGenerate = true)
@@ -119,5 +121,24 @@ public class ContactEntity {
                 ", mobileNumber='" + phone + '\'' +
                 ", emailAddress='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+//        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactEntity that = (ContactEntity) o;
+        return id == that.id &&
+                color == that.color &&
+                isSelected == that.isSelected &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(family, that.family) &&
+                Objects.equals(phone, that.phone) &&
+                Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, family, phone, email, color, isSelected);
     }
 }

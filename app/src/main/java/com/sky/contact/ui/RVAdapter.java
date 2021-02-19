@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.AsyncListDiffer;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,64 +23,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
-    private final List<ContactEntity> contacts;
-    private final Context context;
+    private final AsyncListDiffer<ContactEntity> mDiffer = new AsyncListDiffer<>(this, DIFF_CALLBACK);
     private boolean isSelectingMode;
     private final RecyclerView recyclerView;
     private int selectedCount = 0;
+    private final Context context;
 
-    public RVAdapter(RecyclerView recyclerView, Context context, List<ContactEntity> contacts) {
+    public RVAdapter(RecyclerView recyclerView, Context context) {
         if (!(context instanceof OnSelectingModeListener)) {
             throw new IllegalStateException("context must be instance of OnSelectingModeListener");
         }
         this.context = context;
-        this.contacts = contacts;
         this.recyclerView = recyclerView;
         onSelectingModeListener = (OnSelectingModeListener) context;
+    }
+
+    public void submitList(List<ContactEntity> list) {
+        mDiffer.submitList(list);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ContactEntity contact = contacts.get(position);
-
-        holder.alphabetView.setClickable(false);
-
-        holder.alphabetView.setSourceText(contact.getName());
-        holder.tvName.setText(contact.getFullName());
-        holder.alphabetView.setBackgroundColor(contact.getColor());
-        holder.alphabetView.setChecked(contact.isSelected());
-
-        holder.itemView.setOnClickListener(v -> {
-            if (isSelectingMode) {
-                setSelected(holder);
-            } else {
-                Intent intent = new Intent(context, Act_ContactDetail.class);
-                intent.putExtra(Constants.KEY_CONTACT_ID, contacts.get(holder.getAdapterPosition()).getId());
-                context.startActivity(intent);
-            }
-        });
-
-        holder.itemView.setOnLongClickListener(v -> {
-            if (!isSelectingMode) {
-                isSelectingMode = true;
-                onSelectingModeListener.onStartSelectingMode();
-                setSelected(holder);
-                return true;
-            }
-            setSelected(holder);
-            return true;
-        });
+        ContactEntity contact = mDiffer.getCurrentList().get(position);
+        holder.bindTo(contact);
     }
 
     private void setSelected(ViewHolder holder) {
-        ContactEntity c = contacts.get(holder.getAdapterPosition());
+        ContactEntity c = mDiffer.getCurrentList().get(holder.getAdapterPosition());
         holder.alphabetView.toggle();
         c.setSelected(holder.alphabetView.isChecked());
 
@@ -93,13 +71,14 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return contacts.size();
+        return mDiffer.getCurrentList().size();
     }
 
     public List<ContactEntity> getSelectedItems() {
         List<ContactEntity> selected = new ArrayList<>();
-        for (ContactEntity contact :
-                contacts) {
+        List<ContactEntity> currentList = mDiffer.getCurrentList();
+
+        for (ContactEntity contact : currentList) {
             if (contact.isSelected()) {
                 selected.add(contact);
             }
@@ -107,7 +86,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
         return selected;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         AlphabetView alphabetView;
         TextView tvName;
 
@@ -116,21 +95,52 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
             alphabetView = itemView.findViewById(R.id.alphabetView);
             tvName = itemView.findViewById(R.id.tvName);
         }
+
+        public void bindTo(ContactEntity contact) {
+            alphabetView.setClickable(false);
+            alphabetView.setSourceText(contact.getName());
+
+            tvName.setText(contact.getFullName());
+            alphabetView.setBackgroundColor(contact.getColor());
+
+            alphabetView.setChecked(contact.isSelected());
+            alphabetView.invalidate();
+
+            itemView.setOnClickListener(v -> {
+                if (isSelectingMode) {
+                    setSelected(this);
+                } else {
+                    Intent intent = new Intent(context, Act_ContactDetail.class);
+                    intent.putExtra(Constants.KEY_CONTACT_ID, mDiffer.getCurrentList().get(getAdapterPosition()).getId());
+                    context.startActivity(intent);
+                }
+            });
+
+            itemView.setOnLongClickListener(v -> {
+                if (!isSelectingMode) {
+                    isSelectingMode = true;
+                    onSelectingModeListener.onStartSelectingMode();
+                    setSelected(this);
+                    return true;
+                }
+                setSelected(this);
+                return true;
+            });
+        }
     }
 
     public void destroySelectingMode() {
         isSelectingMode = false;
-
-        for (ContactEntity contact : contacts) {
+        List<ContactEntity> currentList = new ArrayList<>(mDiffer.getCurrentList());
+        for (ContactEntity contact : currentList) {
             if (contact.isSelected()) {
                 contact.setSelected(false);
             }
         }
-
         selectedCount = 0;
-
         notifyItemChangedInScreen();
     }
+
 
     private void notifyItemChangedInScreen() {
         LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
@@ -151,23 +161,38 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
         } else if (selectedCount == 0) {
             return;
         }
-        for (ContactEntity c : contacts) {
+
+        List<ContactEntity> currentList = mDiffer.getCurrentList();
+
+        for (ContactEntity c : currentList) {
             c.setSelected(selected);
         }
-
         selectedCount = selected ? getItemCount() : 0;
 
         onSelectingModeListener.onSelectedChanged(selectedCount);
+
+        submitList(currentList);
         notifyItemChangedInScreen();
     }
 
     public interface OnSelectingModeListener {
         void onStartSelectingMode();
 
-        void onEndSelectingMode();
-
         void onSelectedChanged(int selectedCount);
     }
 
     private final OnSelectingModeListener onSelectingModeListener;
+
+
+    public static final DiffUtil.ItemCallback<ContactEntity> DIFF_CALLBACK = new DiffUtil.ItemCallback<ContactEntity>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull ContactEntity oldItem, @NonNull ContactEntity newItem) {
+            return oldItem.getId() == newItem.getId() && oldItem.isSelected() == newItem.isSelected();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull ContactEntity oldItem, @NonNull ContactEntity newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
 }

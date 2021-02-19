@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,16 +22,17 @@ import com.sky.contact.database.ContactEntity;
 import com.sky.contact.ui.RVAdapter;
 import com.sky.contact.viewmodel.VM_Main;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import jp.wasabeef.recyclerview.animators.FadeInDownAnimator;
 
 public class MainActivity extends AppCompatActivity implements RVAdapter.OnSelectingModeListener {
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private TextView tvNotingFound;
     private RVAdapter adapter;
-    private final List<ContactEntity> contactList = new ArrayList<>();
     private VM_Main mViewModel;
+    private TextView tvSelectedCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,21 +48,11 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.OnSelec
 
     private void initViewModel() {
         final Observer<List<ContactEntity>> observer = contactEntities -> {
-            contactList.clear();
-            contactList.addAll(contactEntities);
-
-            if (contactList.size() == 0) {
-                tvNotingFound.setVisibility(View.VISIBLE);
-            } else {
-                tvNotingFound.setVisibility(View.GONE);
-            }
-
             if (adapter == null) {
-                adapter = new RVAdapter(recyclerView, this, contactList);
+                adapter = new RVAdapter(recyclerView, this);
                 recyclerView.setAdapter(adapter);
-            } else {
-                adapter.notifyDataSetChanged();
             }
+            adapter.submitList(contactEntities);
         };
 
         mViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication()))
@@ -71,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.OnSelec
 
     private void initRecyclerView() {
         recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new FadeInDownAnimator());
     }
 
     private void findViews() {
@@ -94,6 +87,8 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.OnSelec
             addSampleData();
         } else if (Id == R.id.action_delete_all) {
             deleteAllContacts();
+        } else if (Id == R.id.action_get_count) {
+            Toast.makeText(this, adapter.getItemCount() + "", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -110,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.OnSelec
         startActivity(new Intent(this, Act_CreateContact.class));
     }
 
-    private ActionMode actionMode;
     private final ActionMode.Callback callback = new ActionMode.Callback() {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -138,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.OnSelec
                 }
                 case R.id.action_delete: {
                     mViewModel.deleteAll(adapter.getSelectedItems());
-                    mode.finish();
+                    recyclerView.postDelayed(mode::finish, 100);
                     break;
                 }
                 case R.id.action_select_all: {
@@ -158,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.OnSelec
 
     @Override
     public void onStartSelectingMode() {
-        actionMode = toolbar.startActionMode(callback);
+        ActionMode actionMode = toolbar.startActionMode(callback);
 
         if (actionView == null) {
             actionView = LayoutInflater.from(this).inflate(R.layout.action_mode_layout, toolbar, false);
@@ -168,13 +162,6 @@ public class MainActivity extends AppCompatActivity implements RVAdapter.OnSelec
         tvSelectedCount = actionView.findViewById(R.id.tvCount);
     }
 
-    @Override
-    public void onEndSelectingMode() {
-        actionMode.finish();
-
-    }
-
-    private TextView tvSelectedCount;
 
     @Override
     public void onSelectedChanged(int selectedCount) {
